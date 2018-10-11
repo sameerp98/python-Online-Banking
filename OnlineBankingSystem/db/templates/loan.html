@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+    {% block content%}
+    <h1>Select the loan of your preference</h1>
+    {{msg}}<br>
+    <form action="/db/loan/" method="POST" >{% csrf_token %}
+        Enter the amount : <input type ="text" name="amount"/><br>
+        Enter the duration of the loan (in years):<input type="text" name="duration"/><br>
+        The interest rate : <input type = "text" name ="rate" value ="7%" readonly/><br>
+        <input type="submit" value="Create Loan"/>
+    </form>
+    {% endblock %}

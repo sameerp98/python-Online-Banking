@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{{msg}}
+<form action="/db/do_transaction/" method="POST">{% csrf_token %}
+    From ac : {{from_ac}}<br>
+    To account : <input type ='text' name ='to_ac'><br>
+    Enter amount to be transferred : <input type ="text" name ="amount"><br>
+    <input type="submit">
+</form>
+Transaction limit for single transaction is Rs50k.
+{% endblock %}

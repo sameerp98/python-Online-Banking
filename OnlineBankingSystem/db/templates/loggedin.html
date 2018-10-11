@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <center>    
+        {% if history_table %}
+            <style>
+            table,td,th {
+                border : 1px solid black;float:center;
+                float:center;
+            }
+            </style>
+            <table >
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Transfered Funds</th>
+                <th>Time and Date of transfer</th>
+            </tr>
+        {%  for h in history_table %}
+            <tr>
+                <td>{{h.from_account_no}}</td>
+                <td>{{h.to_account_no}}  </td>
+                <td>{{h.amount}}</td>
+                <td>{{h.time}}</td>
+            </tr>
+        {% endfor %}
+            </table>     
+        {% endif %}<br>
+        {{msg}}
+        <br>
+        Welcome {{fullname}} you have succesfully logged in!<br>
+        Select the operation to be performed:
+        <form action ="/db/loggedin/" method="post" >{% csrf_token %}
+            <select name ="operation">
+                <option value="transaction">Transfer Funds</option>
+                <option value="balance">Balance Enquiry</option>
+                <option value="loan">Take a Loan</option>
+                <option value="history">Print Account History</option>
+            </select>
+            <input type ="submit" value="Perform Operation"/>
+        </form>
+    
+        Click <a href="/db/logout">here</a> to logout.
+    </center>
+    {% endblock %} 
