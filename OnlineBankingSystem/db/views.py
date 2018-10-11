@@ -7,6 +7,7 @@ from db.models import Account,History,Loan
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime
+#Verification of various fields is implemented
 class HomePageView(TemplateView):
     def get(self,request,**kwargs):
         return render(request,'db/login')
